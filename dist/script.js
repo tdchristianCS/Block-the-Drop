@@ -26,4 +26,34 @@ interact('.box-class')
   .on('click', function (event) {
   rotationAngle = (rotationAngle + 20) % 360;
   event.currentTarget.style.transform = `translate(${x}px, ${y}px) rotate(${rotationAngle}deg)`; 
-});
+  });
+
+
+  Entity
+	x
+	y
+  yAcc
+ 
+const gravity = 5;
+const maxYAcc = 50;
+ 
+let counter = 0;
+const intervalId = setInterval(() => {
+  console.log("Counter:", counter);
+  counter++;
+  if (counter > 5) {
+    clearInterval(intervalId);
+    console.log("Interval stopped.");
+  }
+}, 10); // Execute every 10 mili second
+ 
+const doGravity = () => {
+	for (let entity of entities) {
+		entity.yAcc += gravity;
+		if (entity.yAcc >= maxYAcc) {
+			entity.yAcc = maxYAcc;
+		}
+		entity.y += entity.yAcc;
+	}
+}
+ 
