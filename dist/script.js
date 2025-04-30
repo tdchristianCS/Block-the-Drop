@@ -18,12 +18,12 @@ interact(element)
     x += event.dx
     y += event.dy
 
-    event.target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+    event.target.style.transform = `translate(${x}px, ${y}px) rotate(${rotationAngle}deg)`
   })
 
 rotationAngle = 0
 interact('.box-class')
   .on('click', function (event) {
   rotationAngle = (rotationAngle + 20) % 360;
-    event.currentTarget.style.transform = `rotate(${rotationAngle}deg)`; 
-  });
+  event.currentTarget.style.transform = `translate(${x}px, ${y}px) rotate(${rotationAngle}deg)`; 
+});
