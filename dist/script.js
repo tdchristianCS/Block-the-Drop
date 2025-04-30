@@ -30,9 +30,9 @@ interact('.box-class')
 
 
   Entity
-	x
-	y
-  yAcc
+	x = 300
+	y = 50
+  yAcc = 0.1
  
 const gravity = 5;
 const maxYAcc = 50;
