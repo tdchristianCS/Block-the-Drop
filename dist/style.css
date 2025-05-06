@@ -9,12 +9,9 @@
   touch-action: none;
 }
 
-#the-ball{
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    border-radius: 50%;
-    position: (100px, 100px);
+.brick-class:hover {
+  background-color: rgb(153, 0, 0);
+  color: #000;
 }
 
 button {
