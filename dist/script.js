@@ -2,7 +2,8 @@
 // Box Can Move (via Drag) and Rotate (via Right Click)
 var box = document.getElementById('the-brick')
 var x = 0; var y = 0
-interact(box)
+var rotationAngle = 0
+interact('.brick-class')
   .draggable({
     modifiers: [
       interact.modifiers.snap({
@@ -31,6 +32,7 @@ interact('.brick-class')
 const addBrick = () => {
   let div = `<div class="brick-class">THE BRICK</div>`;
   $('body').append(div);
+// make new brick draggable and rotatable
 }
 
 $('#add-brick').click(addBrick);
