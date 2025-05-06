@@ -1,6 +1,7 @@
 var element = document.getElementById('the-box')
 var x = 0; var y = 0
 
+
 interact(element)
   .draggable({
     modifiers: [
@@ -23,37 +24,35 @@ interact(element)
 
 rotationAngle = 0
 interact('.box-class')
-  .on('click', function (event) {
+  .on('contextmenu', function (event) {
   rotationAngle = (rotationAngle + 20) % 360;
   event.currentTarget.style.transform = `translate(${x}px, ${y}px) rotate(${rotationAngle}deg)`; 
   });
 
+  
 
-  Entity
-	x = 300
-	y = 50
-  yAcc = 0.1
- 
-const gravity = 5;
-const maxYAcc = 50;
- 
-let counter = 0;
-const intervalId = setInterval(() => {
-  console.log("Counter:", counter);
-  counter++;
-  if (counter > 5) {
-    clearInterval(intervalId);
-    console.log("Interval stopped.");
-  }
-}, 10); // Execute every 10 mili second
- 
-const doGravity = () => {
-	for (let entity of entities) {
-		entity.yAcc += gravity;
-		if (entity.yAcc >= maxYAcc) {
-			entity.yAcc = maxYAcc;
-		}
-		entity.y += entity.yAcc;
-	}
-}
+var element = document.getElementById('the-ball')
+interact(element)
+  .draggable({
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: 'parent',
+        endOnly: true
+      })
+    ],
+    inertia: true
+  })
+  .on('dragmove', function (event) {
+    var target = event.target
+    var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+    var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+    target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+
+    target.setAttribute('data-x', x)
+    target.setAttribute('data-y', y)
+  }) 
+
+
+
  
