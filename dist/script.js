@@ -1,8 +1,8 @@
-var element = document.getElementById('the-box')
+var box = document.getElementById('the-box')
 var x = 0; var y = 0
 
 
-interact(element)
+interact(box)
   .draggable({
     modifiers: [
       interact.modifiers.snap({
@@ -13,7 +13,6 @@ interact(element)
         relativePoints: [ { x: 0, y: 0 } ]
       }),
     ],
-    // inertia: true
   })
   .on('dragmove', function (event) {
     x += event.dx
@@ -29,29 +28,30 @@ interact('.box-class')
   event.currentTarget.style.transform = `translate(${x}px, ${y}px) rotate(${rotationAngle}deg)`; 
   });
 
-  
 
-var element = document.getElementById('the-ball')
-interact(element)
+
+  var ball = document.getElementById('the-ball')
+  var x = 100; var y = 100
+  interact(ball)
   .draggable({
     modifiers: [
-      interact.modifiers.restrictRect({
-        restriction: 'parent',
-        endOnly: true
+      interact.modifiers.snap({
+        targets: [ 
+          interact.snappers.grid({ x: 30, y: 30 })   
+        ],
+        range: Infinity,  
+        relativePoints: [ { x: 0, y: 0 } ]
       })
-    ],
-    inertia: true
+    ]
   })
   .on('dragmove', function (event) {
-    var target = event.target
-    var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
-    var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+    x += event.dx
+    y += event.dy
 
-    target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+    event.target.style.transform = `translate(${x}px, ${y}px) rotate(${rotationAngle}deg)`
+  })
 
-    target.setAttribute('data-x', x)
-    target.setAttribute('data-y', y)
-  }) 
+
 
 
 
