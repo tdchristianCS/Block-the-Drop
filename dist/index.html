@@ -8,21 +8,23 @@
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<div> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6wgUQfmXggXycAMJ5G0KbLAz6Z1f_gd7kyA&s" >
-   <h2>Click and Drag To Move Box</h2>
-   <h2>Right Click Box to Rotate</h2>
+   <h2>Click and Drag To Move "THE BRICK"</h2>
+   <h2>Right Click "THE BRICK" to Rotate</h2>
+
+   <div id="container"></div>
+   <button id="add-brick">Another Brick</button>
   
-<div id="the-box" class="box-class">
-  THE BOX
+<div id="the-brick" class="brick-class">
+  THE BRICK
 </div>
   <div id="game">
     <div id="ball"></div>
 </div>
-  
-  
+
   
   <! sources: https://interactjs.io >
 <!-- partial -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.10.27/interact.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/PhysicsJS/0.7.0/physicsjs.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.20.0/matter.min.js'></script><script  src="./script.js"></script>

@@ -1,9 +1,9 @@
-#the-box {
+.brick-class {
   width: 150px;
   border-radius: 4px;
   padding: 2%;
   margin: 1rem 0 0 1rem;
-  background-color: #29e;
+  background-color: rgb(209, 66, 66);
   color: #fff;
   font-size: 1.2em;
   touch-action: none;
@@ -15,4 +15,17 @@
     background-color: red;
     border-radius: 50%;
     position: (100px, 100px);
+}
+
+button {
+  font-size: 25px;
+  font-family: "Times New Roman", "Times", serif;
+  padding: 1px;
+  border-radius: 7px;
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.5);
+  color: #222;
+  cursor: pointer;
 }
