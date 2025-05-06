@@ -4,7 +4,7 @@ var box = document.getElementById('the-brick')
 var x = 0; var y = 0
 var rotationAngle = 0
 
-//Dragging Box
+//Dragging Box (Source: Interact.js, was tweaked to comply with our parameters)
 interact('.brick-class')
   .draggable({
     modifiers: [
@@ -24,7 +24,7 @@ interact('.brick-class')
     event.target.style.transform = `translate(${x}px, ${y}px) rotate(${rotationAngle}deg)`
   })
 
-//Rotating Box
+//Rotating Box (Source: Interact.js, was tweaked to comply with our parameters)
 rotationAngle = 0
 interact('.brick-class')
   .on('contextmenu', function (event) {
