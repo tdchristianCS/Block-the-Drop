@@ -29,6 +29,7 @@ interact('.brick-class')
 
     let x = parseInt(el.attr('data-x'));
     let y = parseInt(el.attr('data-y'));
+    let a = parseInt(el.attr('data-angle'));
 
     console.log(x, y);
 
