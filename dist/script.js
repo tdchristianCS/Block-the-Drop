@@ -2,7 +2,7 @@
 // Box Can Move (via Drag) and Rotate (via Right Click)
 var box = document.getElementById('the-brick')
 // var x = 0; var y = 0
-var rotationAngle = 0
+// var rotationAngle = 0
 var lastY = 0;
 var nBricks = 1;
 var maxBricks = 6;
@@ -49,9 +49,13 @@ interact('.brick-class')
 
     let x = parseInt(el.attr('data-x'));
     let y = parseInt(el.attr('data-y'));
+    let a = parseInt(el.attr('data-angle'));
 
-  rotationAngle = (rotationAngle + 20) % 360;
-  event.currentTarget.style.transform = `translate(${x}px, ${y}px) rotate(${rotationAngle}deg)`; 
+  a = (a + 20) % 360;
+
+  el.attr('data-angle', a);
+
+  event.currentTarget.style.transform = `translate(${x}px, ${y}px) rotate(${a}deg)`; 
   });
 
 //Adding New Brick
@@ -65,7 +69,7 @@ const addBrick = () => {
 
     lastY =+ 20
 
-    let div = `<div class="brick-class" data-x="0" data-y="${lastY}">THE BRICK</div>`;
+    let div = `<div class="brick-class" data-x="0" data-y="${lastY} " data-angle = "0" >THE BRICK</div>`;
 
 
 
@@ -75,18 +79,7 @@ $('#add-brick').click(addBrick);
 
 // Make Ball move back and forth horizontally
 const addBallMove = () => {
- ballposition += ballspeed; 
-  
-    if (ballposition >= 100) {
-      ballspeed = -5; 
-    } else if (ballposition <= 0) {
-      ballspeed = 5; 
-    }
-  
-  $('#the-ball').css('left', ballposition + 'px'); 
-  };
-  
-
+}
 
 
 
