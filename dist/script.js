@@ -77,9 +77,9 @@ const addBrick = () => {
 }
 $('#add-brick').click(addBrick);
 
-// Make Ball move back and forth horizontally
-const addBallMove = () => {
-}
+// Make Ball move back and forth horizontally (using jquery) (make it draggable as well)
+// const addBallMove = () => {
+// }
 
 
 
