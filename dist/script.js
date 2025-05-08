@@ -5,8 +5,10 @@ var box = document.getElementById('the-brick')
 var rotationAngle = 0
 var lastY = 0;
 var nBricks = 1;
-var maxBricks = 5;
+var maxBricks = 6;
 var ballposition = 0
+var ballspeed = 5
+
 
 
 //Dragging Box (Source: Interact.js, was tweaked to comply with our parameters)
@@ -73,6 +75,17 @@ $('#add-brick').click(addBrick);
 
 // Make Ball move back and forth horizontally
 const addBallMove = () => {
+ ballposition += ballspeed; 
+  
+    if (ballposition >= 100) {
+      ballspeed = -5; 
+    } else if (ballposition <= 0) {
+      ballspeed = 5; 
+    }
+  
+  $('#the-ball').css('left', ballposition + 'px'); 
+  };
+  
 
 
 
@@ -83,7 +96,7 @@ const addBallMove = () => {
 
 
 
-}
+
 
 
 
