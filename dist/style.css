@@ -28,8 +28,11 @@ button:hover {
 }
 
 .ball-class {
+  position: absolute;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background-color: rgb(29, 240, 255);
+  left: 0px;
+  top: 100px;
 }

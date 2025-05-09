@@ -39,7 +39,7 @@ interact('.brick-class')
     el.attr('data-x', x);
     el.attr('data-y', y);
 
-    event.target.style.transform = `translate(${x}px, ${y}px) rotate(${rotationAngle}deg)`
+    event.target.style.transform = `translate(${x}px, ${y}px) rotate(${a}deg)`
   })
 
 //Rotating Box (Source: Interact.js, was tweaked to comply with our parameters)
@@ -79,8 +79,36 @@ const addBrick = () => {
 $('#add-brick').click(addBrick);
 
 // Make Ball move back and forth horizontally (using jquery) (make it draggable as well)
-// const addBallMove = () => {
-// }
+const addBallMove = () => {
+  const $ball = $('.ball-class');
+  const distance = 100;
+  const speed = 5;
+  let direction = 1
+
+  const initialTop = $ball.position().top;
+
+  const move = () => {
+    const distance = amplitude * direction;
+    $ball.animate(
+      {
+        left: "+=" + distance  + "px",
+        top: initialTop
+      },
+      speed,
+      () => {
+        direction *= -1;
+        move();
+      }
+    );
+  };
+
+  move();
+};
+
+$(document).ready(function() {
+  addBallMove();
+  });
+
 
 
 
