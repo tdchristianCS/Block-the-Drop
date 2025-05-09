@@ -45,7 +45,7 @@ interact('.brick-class')
 //Rotating Box (Source: Interact.js, was tweaked to comply with our parameters)
 rotationAngle = 0
 interact('.brick-class')
-  .on('contextmenu', function (event) {
+  .on('dblclick', function (event) {
     let el = $(event.currentTarget);
 
     let x = parseInt(el.attr('data-x'));
@@ -101,11 +101,28 @@ const addBallMove = () => {
 // This is used like frames so it doesn't go supersonic speed, apparently 16 is typical
   setInterval(move, 16); 
 };
-
 $(document).ready(function() {
   addBallMove();
 });
 
+
+
+// At a random frame the ball will fall
+const addBallDrop = () => { 
+  const $ball = $('.ball-class');
+
+  // Ball will drop between 5-10 seconds (Source in html, stack overflow)
+  const randomTime = Math.random() * (10000 - 5000) + 5000; 
+  setTimeout(() => {
+    $ball.css('transition', 'top 2s linear');
+    $ball.css('top', '100vh'); //apparently vh is similar to px, px would go up when i tried it though
+  }, randomTime);
+
+  setInterval(move, 16); 
+};
+$(document).ready(function() {
+  addBallDrop();
+});
 
 
 
