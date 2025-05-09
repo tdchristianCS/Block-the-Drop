@@ -78,36 +78,33 @@ const addBrick = () => {
 }
 $('#add-brick').click(addBrick);
 
-// Make Ball move back and forth horizontally (using jquery) (make it draggable as well)
+// Make Ball move back and forth horizontally (using jquery) 
 const addBallMove = () => {
   const $ball = $('.ball-class');
-  const distance = 100;
-  const speed = 5;
-  let direction = 1
+  const speed = 5; 
+  const amplitude = 1400; // how many pixels it can go
+  let direction = 1; // 1 is fowards, -1 backward
 
-  const initialTop = $ball.position().top;
+  let position = 0; // position of the ball
 
   const move = () => {
-    const distance = amplitude * direction;
-    $ball.animate(
-      {
-        left: "+=" + distance  + "px",
-        top: initialTop
-      },
-      speed,
-      () => {
-        direction *= -1;
-        move();
-      }
-    );
+    position += speed * direction;
+
+    // Switches direction so it doesn't go off screen. Online I found that | | is an "operator" it like which returns if true
+    if (position >= amplitude || position <= 0) {
+      direction *= -1;
+    }
+
+    $ball.css('left', position + 'px');
   };
 
-  move();
+// This is used like frames so it doesn't go supersonic speed, apparently 16 is typical
+  setInterval(move, 16); 
 };
 
 $(document).ready(function() {
   addBallMove();
-  });
+});
 
 
 
