@@ -36,3 +36,12 @@ button:hover {
   left: 0px;
   top: 100px;
 }
+
+.lose-box {
+  position: absolute;
+  width: 1450px;
+  height: 30px;
+  background-color: rgb(139, 10, 10);
+  left: 0px;
+  top: 700px;
+}

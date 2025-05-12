@@ -118,6 +118,10 @@ const addBallDrop = () => {
     $ball.css('top', '100vh'); //apparently vh is similar to px, px would go up when i tried it though
   }, randomTime);
 
+  if ($ball <= 700) {
+    exit
+  }
+
   setInterval(move, 16); 
 };
 $(document).ready(function() {
