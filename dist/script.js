@@ -20,7 +20,7 @@ interact('.brick-class')
           interact.snappers.grid({ x: 30, y: 30 })
         ],
         range: Infinity,
-        relativePoints: [ { x: 0, y: 0 } ]
+        relativePoints: [{ x: 0, y: 0 }]
       }),
     ],
   })
@@ -52,11 +52,11 @@ interact('.brick-class')
     let y = parseInt(el.attr('data-y'));
     let a = parseInt(el.attr('data-angle'));
 
-  a = (a + 20) % 360;
+    a = (a + 20) % 360;
 
-  el.attr('data-angle', a);
+    el.attr('data-angle', a);
 
-  event.currentTarget.style.transform = `translate(${x}px, ${y}px) rotate(${a}deg)`; 
+    event.currentTarget.style.transform = `translate(${x}px, ${y}px) rotate(${a}deg)`;
   });
 
 //Adding New Brick
@@ -68,9 +68,9 @@ const addBrick = () => {
 
   nBricks += 1;
 
-    lastY =+ 20
+  lastY = + 20
 
-    let div = `<div class="brick-class" data-x="0" data-y="${lastY} " data-angle = "0" >THE BRICK</div>`;
+  let div = `<div class="brick-class" data-x="0" data-y="${lastY} " data-angle = "0" >THE BRICK</div>`;
 
 
 
@@ -81,7 +81,7 @@ $('#add-brick').click(addBrick);
 // Make Ball move back and forth horizontally (using jquery) 
 const addBallMove = () => {
   const $ball = $('.ball-class');
-  const speed = 5; 
+  const speed = 5;
   const amplitude = 1400; // how many pixels it can go
   let direction = 1; // 1 is fowards, -1 backward
 
@@ -98,43 +98,47 @@ const addBallMove = () => {
     $ball.css('left', position + 'px');
   };
 
-// This is used like frames so it doesn't go supersonic speed, apparently 16 is typical
-  setInterval(move, 16); 
+  // This is used like frames so it doesn't go supersonic speed, apparently 16 is typical
+  setInterval(move, 16);
 };
-$(document).ready(function() {
+$(document).ready(function () {
   addBallMove();
 });
 
 
 
+
+
+// make it so when ball reached under 700 vertical position, game will be over (watched a bunch of yt vids, don't think this is jquery)
+const checkGameOver = () => {
+  const $ball = $('.ball-class');
+  const ballTop = parseInt($ball.css('top'));
+  if (ballTop >= 700) {
+    // alert('Game Over! The ball fell!'); // makes a tab at top of screen where dead
+    $('#game-over').removeClass('hide');
+    $('#app').addClass('hide');
+    clearInterval(interval);
+  }
+};
+const interval = setInterval(checkGameOver, 100); // should check every 100 milliseconds
+
+// Make it so when Ball hits the Brick, it will bounce back (jquery)
+
 // At a random frame the ball will fall
-const addBallDrop = () => { 
+const addBallDrop = () => {
   const $ball = $('.ball-class');
 
   // Ball will drop between 5-10 seconds (Source in html, stack overflow)
-  const randomTime = Math.random() * (10000 - 5000) + 5000; 
+  const randomTime = Math.random() * (10000 - 5000) + 5000;
   setTimeout(() => {
     $ball.css('transition', 'top 2s linear');
     $ball.css('top', '100vh'); //apparently vh is similar to px, px would go up when i tried it though
-  
+
   }, randomTime);
 
-  // make it so when ball reached under 700 vertical position, game will be over (watched a bunch of yt vids)
-  const checkGameOver = () => {
-    const ballTop = parseInt($ball.css('top'));
-    if (ballTop >= 700) {
-      alert('Game Over! The ball has fallen!'); // makes a tab at top of screen where dead
-      clearInterval(interval);
-    }
-  };
-  const interval = setInterval(checkGameOver, 100); // should check every 100 milliseconds
-
-
-
-
-  setInterval(move, 16); 
+  setInterval(move, 16);
 };
-$(document).ready(function() {
+$(document).ready(function () {
   addBallDrop();
 });
 
@@ -150,4 +154,4 @@ $(document).ready(function() {
 
 
 
- 
+

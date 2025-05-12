@@ -1,44 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Untitled</title>
   <link rel="stylesheet" href="./style.css">
 
 </head>
+
 <body>
-<!-- partial:index.partial.html -->
-   <h2>Click and Drag To Move "THE BRICK"</h2>
-   <h2>Double Click "THE BRICK" to Rotate</h2>
+  <!-- partial:index.partial.html -->
+  <div id="app">
+  <h2>Click and Drag To Move "THE BRICK"</h2>
+  <h2>Double Click "THE BRICK" to Rotate</h2>
 
-<!-- // get ball class to appea, middle of screen on x axis  -->
-</div>
-<div class="ball-class">
-</div>
-
-<!-- add line spacing (a blank gap) -->
-<hr>
-<hr>
-
-
-   <div id="container"></div>
-   <button id="add-brick">Another Brick</button>
-  
-<div id="the-brick" class="brick-class" data-x="0" data-y="0" data-angle="0">
-  THE BRICK
+  <!-- // get ball class to appea, middle of screen on x axis  -->
+  <div class="ball-class">
   </div>
 
-<div id = "you-lose" class="lose-box" ></div>
+  <!-- add line spacing (a blank gap) -->
+  <hr>
+  <hr>
 
-  
-  <! sources: https://interactjs.io >
-  <! sources: https://stackoverflow.com/questions/34656758/setinterval-with-random-time-in-javascript >
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.10.27/interact.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/PhysicsJS/0.7.0/physicsjs.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.20.0/matter.min.js'></script>
-<script  src="./script.js"></script>
+  <div id="container"></div>
+  <button id="add-brick">Another Brick</button>
 
+  <div id="the-brick" class="brick-class" data-x="0" data-y="0" data-angle="0">
+    THE BRICK
+  </div>
+
+  <div id="you-lose" class="lose-box" ></div>/<!-- sources: https://interactjs.io> -->
+    <!-- sources: https://stackoverflow.com/questions/34656758/setinterval-with-random-time-in-javascript> -->
+
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.10.27/interact.min.js'></script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/PhysicsJS/0.7.0/physicsjs.min.js'></script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.20.0/matter.min.js'></script>
+      <script src="./script.js"></script>
+
+    </div>
+    <div id="game-over" class="hide">Game Over! The ball fell!</div>
 </body>
+
 </html>

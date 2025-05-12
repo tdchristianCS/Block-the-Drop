@@ -45,3 +45,12 @@ button:hover {
   left: 0px;
   top: 700px;
 }
+
+.hide {
+  display: none;
+}
+
+#game-over {
+  width: 100vw;
+  height: 100vh;
+}
