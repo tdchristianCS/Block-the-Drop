@@ -116,11 +116,21 @@ const addBallDrop = () => {
   setTimeout(() => {
     $ball.css('transition', 'top 2s linear');
     $ball.css('top', '100vh'); //apparently vh is similar to px, px would go up when i tried it though
+  
   }, randomTime);
 
-  if ($ball <= 700) {
-    exit
-  }
+  // make it so when ball reached under 700 vertical position, game will be over (watched a bunch of yt vids)
+  const checkGameOver = () => {
+    const ballTop = parseInt($ball.css('top'));
+    if (ballTop >= 700) {
+      alert('Game Over! The ball has fallen!'); // makes a tab at top of screen where dead
+      clearInterval(interval);
+    }
+  };
+  const interval = setInterval(checkGameOver, 100); // should check every 100 milliseconds
+
+
+
 
   setInterval(move, 16); 
 };
