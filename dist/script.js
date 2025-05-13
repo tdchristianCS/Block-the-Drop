@@ -142,15 +142,19 @@ const addCollision = () => {
   const $ball = $('.ball-class');
 
   const checkCollision = () => {
-    const ballOffset = $ball.offset();
-    const ballWidth = $ball.outerWidth();
-    const ballHeight = $ball.outerHeight();
+    const ballOffset = $ball.offset(); 
+    const ballWidth = 20;
+    const ballHeight = 20;
+
+    console.log('Ball Offset:', ballOffset, 'Width:', ballWidth, 'Height:', ballHeight); // Debug log for ball
 
     $('.brick-class').each(function () {
       const $brick = $(this);
       const brickOffset = $brick.offset();
-      const brickWidth = $brick.outerWidth();
-      const brickHeight = $brick.outerHeight();
+      const brickWidth = 205;
+      const brickHeight = 77;
+
+      console.log('Brick Offset:', brickOffset, 'Width:', brickWidth, 'Height:', brickHeight); // Debug log for brick
 
       // Check if the ball overlaps with the brick
       if (
@@ -159,6 +163,7 @@ const addCollision = () => {
         ballOffset.top < brickOffset.top + brickHeight &&
         ballOffset.top + ballHeight > brickOffset.top
       ) {
+        console.log('Collision detected!'); // Debug log for collision
         // Reverse the ball's vertical direction
         const currentTop = parseInt($ball.css('top'));
         $ball.css('top', currentTop - 200 + 'px'); // Move the ball upwards
@@ -166,7 +171,7 @@ const addCollision = () => {
     });
   };
 
-  // Check for collisions every 16ms 
+  // Check for collisions every 16ms
   setInterval(checkCollision, 16);
 };
 
