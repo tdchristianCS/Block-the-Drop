@@ -160,7 +160,7 @@ const addCollision = () => {
     });
   };
 
-  // Check for collisions every 16ms 
+  // Check for collisions every 16ms why no work
   setInterval(checkCollision, 16);
 };
 
