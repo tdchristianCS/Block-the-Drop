@@ -160,13 +160,13 @@ const addCollision = () => {
     });
   };
 
-  // Check for collisions every 16ms (typical frame rate)
+  // Check for collisions every 16ms 
   setInterval(checkCollision, 16);
 };
 
 $(document).ready(function () {
-  addBallMove(); // Keep the original ball movement
-  addCollision(); // Add collision detection
+  addBallMove(); 
+  addCollision(); 
   addBallDrop();
 });
 
