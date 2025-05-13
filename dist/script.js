@@ -1,4 +1,3 @@
-
 // Box Can Move (via Drag) and Rotate (via Right Click)
 var box = document.getElementById('the-brick')
 // var x = 0; var y = 0
@@ -101,13 +100,6 @@ const addBallMove = () => {
   // This is used like frames so it doesn't go supersonic speed, apparently 16 is typical
   setInterval(move, 16);
 };
-$(document).ready(function () {
-  addBallMove();
-});
-
-
-
-
 
 // make it so when ball reached under 700 vertical position, game will be over (watched a bunch of yt vids, don't think this is jquery)
 const checkGameOver = () => {
@@ -138,7 +130,43 @@ const addBallDrop = () => {
 
   setInterval(move, 16);
 };
+
+// Add collision detection
+const addCollision = () => {
+  const $ball = $('.ball-class');
+
+  const checkCollision = () => {
+    const ballOffset = $ball.offset();
+    const ballWidth = $ball.outerWidth();
+    const ballHeight = $ball.outerHeight();
+
+    $('.brick-class').each(function () {
+      const $brick = $(this);
+      const brickOffset = $brick.offset();
+      const brickWidth = $brick.outerWidth();
+      const brickHeight = $brick.outerHeight();
+
+      // Check if the ball overlaps with the brick
+      if (
+        ballOffset.left < brickOffset.left + brickWidth &&
+        ballOffset.left + ballWidth > brickOffset.left &&
+        ballOffset.top < brickOffset.top + brickHeight &&
+        ballOffset.top + ballHeight > brickOffset.top
+      ) {
+        // Reverse the ball's vertical direction
+        const currentTop = parseInt($ball.css('top'));
+        $ball.css('top', currentTop - 200 + 'px'); // Move the ball upwards
+      }
+    });
+  };
+
+  // Check for collisions every 16ms (typical frame rate)
+  setInterval(checkCollision, 16);
+};
+
 $(document).ready(function () {
+  addBallMove(); // Keep the original ball movement
+  addCollision(); // Add collision detection
   addBallDrop();
 });
 
