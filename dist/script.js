@@ -110,8 +110,14 @@ const checkGameOver = () => {
     $('#game-over').removeClass('hide');
     $('#app').addClass('hide');
     clearInterval(interval);
+    // Make it so if ball get pushed up past Y start point, you win
+  
+  } else if (ballTop < 0) {
+    $("#game-winner").removeClass('hide');
+    $('#app').addClass('hide');
+    clearInterval(interval);
   }
-};
+}; 
 const interval = setInterval(checkGameOver, 100); // should check every 100 milliseconds
 
 // Make it so when Ball hits the Brick, it will bounce back (jquery)
@@ -160,7 +166,7 @@ const addCollision = () => {
     });
   };
 
-  // Check for collisions every 16ms why no work
+  // Check for collisions every 16ms 
   setInterval(checkCollision, 16);
 };
 
@@ -169,17 +175,3 @@ $(document).ready(function () {
   addCollision(); 
   addBallDrop();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
