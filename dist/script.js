@@ -127,10 +127,11 @@ const addBallDrop = () => {
   const $ball = $('.ball-class');
 
   // Ball will drop between 5-10 seconds (Source in html, stack overflow)
-  const randomTime = Math.random() * (10000 - 5000) + 5000;
+  const randomTime = Math.random() * (10000 - 5000) + 25000;
   setTimeout(() => {
     $ball.css('transition', 'top 2s linear');
     $ball.css('top', '100vh'); //apparently vh is similar to px, px would go up when i tried it though
+    
 
   }, randomTime);
 
