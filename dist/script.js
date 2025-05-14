@@ -5,8 +5,9 @@ var box = document.getElementById('the-brick')
 var lastY = 0;
 var nBricks = 1;
 var maxBricks = 5;
-var ballposition = 0
-var ballspeed = 5
+var ballposition = 0;
+var ballspeed = 5;
+var level = 1;
 
 
 
@@ -115,6 +116,7 @@ const checkGameOver = () => {
   } else if (ballTop < 0) {
     $("#game-winner").removeClass('hide');
     $('#app').addClass('hide');
+    $('.brick-class').remove();
     clearInterval(interval);
   }
 }; 
@@ -171,7 +173,7 @@ const addCollision = () => {
         // console.log('Collision detected!'); // Debug log for collision
         // Reverse the ball's vertical direction
         const currentTop = parseInt($ball.css('top'));
-        $ball.css('top', currentTop - 200 + 'px'); // Move the ball upwards
+        $ball.css('top', currentTop - 1000 / (level) + 'px'); // Move the ball upwards
       }
     });
   };
