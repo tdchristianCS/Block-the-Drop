@@ -126,22 +126,17 @@ const interval = setInterval(checkGameOver, 100); // should check every 100 mill
 const addBallDrop = () => {
   const $ball = $('.ball-class');
 
-    document.addEventListener("click", handler, true);
-    document.addEventListener("dragmove", handler, true);
-
-    function handler(e) {
-    e.stopPropagation();
-    e.preventDefault();
-} 
+  // Disable dragging when the ball starts falling
+  const disableDragging = () => {
+    interact('.brick-class').unset(); // Disable dragging for all bricks
+  };
 
   // Ball will drop between 5-10 seconds (Source in html, stack overflow)
   const randomTime = Math.random() * (10000 - 5000) + 5000;
   setTimeout(() => {
     $ball.css('transition', 'top 2s linear');
-    $ball.css('top', '100vh'); //apparently vh is similar to px, px would go up when i tried it though
-
-
-
+    $ball.css('top', '100vh'); // Ball falls to the bottom of the screen
+    disableDragging(); // Disable dragging when the ball starts falling
   }, randomTime);
 
   setInterval(move, 16);
