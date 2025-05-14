@@ -126,9 +126,9 @@ const interval = setInterval(checkGameOver, 100); // should check every 100 mill
 const addBallDrop = () => {
   const $ball = $('.ball-class');
 
-  // Disable dragging when the ball starts falling
+  // When ball falls, no more moves from brick
   const disableDragging = () => {
-    interact('.brick-class').unset(); // Disable dragging for all bricks
+    interact('.brick-class').unset(); // Stop letting you rotate and drag bricks
   };
 
   // Ball will drop between 5-10 seconds (Source in html, stack overflow)
