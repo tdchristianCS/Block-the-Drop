@@ -4,7 +4,7 @@ var box = document.getElementById('the-brick')
 // var rotationAngle = 0
 var lastY = 0;
 var nBricks = 1;
-var maxBricks = 6;
+var maxBricks = 5;
 var ballposition = 0
 var ballspeed = 5
 
@@ -51,7 +51,7 @@ interact('.brick-class')
     let y = parseInt(el.attr('data-y'));
     let a = parseInt(el.attr('data-angle'));
 
-    a = (a + 20) % 360;
+    a = (a + 30) % 360;
 
     el.attr('data-angle', a);
 
@@ -80,7 +80,7 @@ $('#add-brick').click(addBrick);
 // Make Ball move back and forth horizontally (using jquery) 
 const addBallMove = () => {
   const $ball = $('.ball-class');
-  const speed = 5;
+  const speed = 3;
   const amplitude = 1400; // how many pixels it can go
   let direction = 1; // 1 is fowards, -1 backward
 
@@ -126,9 +126,9 @@ const interval = setInterval(checkGameOver, 100); // should check every 100 mill
 const addBallDrop = () => {
   const $ball = $('.ball-class');
 
-  // When ball falls, no more moves from brick
+  // Disable dragging when the ball starts falling
   const disableDragging = () => {
-    interact('.brick-class').unset(); // Stop letting you rotate and drag bricks
+    interact('.brick-class').unset(); // Disable dragging for all bricks
   };
 
   // Ball will drop between 5-10 seconds (Source in html, stack overflow)
