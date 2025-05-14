@@ -48,6 +48,7 @@ button:hover {
 
 .hide {
   display: none;
+  z-index: 10000;
 }
 
 #game-over {
