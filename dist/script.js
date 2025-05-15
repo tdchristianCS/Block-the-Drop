@@ -10,6 +10,27 @@ var ballspeed = 5;
 var level = 1;
 
 
+// Popup panel 
+const HomeandGamePanel = () => {
+  $('#gamescreen').removeClass('hide');
+  $('#homescreen').addClass('hide');
+
+  // start movement
+  addBallMove(); 
+  addCollision(); 
+  addBallDrop();
+}
+
+const hideHelp = () => {
+  $('#gamescreen').addClass('hide');
+  $('#homescreen').removeClass('hide');
+}
+
+$('#startbutton').click(HomeandGamePanel);
+// $('#hideHelp').click(hideHelp);
+
+
+
 
 //Dragging Box (Source: Interact.js, was tweaked to comply with our parameters)
 interact('.brick-class')
@@ -106,6 +127,9 @@ const addBallMove = () => {
 const checkGameOver = () => {
   const $ball = $('.ball-class');
   const ballTop = parseInt($ball.css('top'));
+
+  console.log(ballTop);
+
   if (ballTop >= 700) {
     // alert('Game Over! The ball fell!'); // makes a tab at top of screen where dead
     $('#game-over').removeClass('hide');
@@ -134,7 +158,7 @@ const addBallDrop = () => {
   };
 
   // Ball will drop between 5-10 seconds (Source in html, stack overflow)
-  const randomTime = Math.random() * (10000 - 5000) + 5000;
+  const randomTime = Math.random() * (10000 - 5000) + 25000;
   setTimeout(() => {
     $ball.css('transition', 'top 2s linear');
     $ball.css('top', '100vh'); // Ball falls to the bottom of the screen
@@ -183,7 +207,4 @@ const addCollision = () => {
 };
 
 $(document).ready(function () {
-  addBallMove(); 
-  addCollision(); 
-  addBallDrop();
 });

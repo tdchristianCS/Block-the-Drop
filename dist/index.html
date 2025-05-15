@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
   <meta charset="UTF-8">
   <title>Untitled</title>
@@ -9,31 +10,38 @@
 </head>
 
 <body>
-  <!-- partial:index.partial.html -->
-  <div id="app">
-  <h2>Click and Drag To Move "THE BRICK"</h2>
-  <h2>Double Click "THE BRICK" to Rotate</h2>
 
-  <!-- // get ball class to appea, middle of screen on x axis  -->
-  <div class="ball-class">
+  <div class='panel' id='homescreen'>
+    <h1>This is the Home screen!</h1>
+    <button id='startbutton'>Start</button>
   </div>
+  <div class='panel hide' id='gamescreen'>
 
-  <!-- add line spacing (a blank gap) -->
-  <hr>
-  <hr>
+    <!-- partial:index.partial.html -->
+    <div id="app">
+      <h2>Click and Drag To Move "THE BRICK"</h2>
+      <h2>Double Click "THE BRICK" to Rotate</h2>
+
+      <!-- // get ball class to appea, middle of screen on x axis  -->
+      <div class="ball-class">
+      </div>
+
+      <!-- add line spacing (a blank gap) -->
+      <hr>
+      <hr>
 
 
-  <div id="container"></div>
-  <button id="add-brick">Another Brick</button>
+      <div id="container"></div>
+      <button id="add-brick">Another Brick</button>
 
-  <div id="the-brick" class="brick-class" data-x="0" data-y="0" data-angle="0">
-    THE BRICK
-  </div>
+      <div id="the-brick" class="brick-class" data-x="0" data-y="0" data-angle="0">
+        THE BRICK
+      </div>
 
-  <div id="you-lose" class="lose-box" ></div>
-    <!-- sources: https://interactjs.io> -->
-    <!-- sources: https://stackoverflow.com/questions/34656758/setinterval-with-random-time-in-javascript> -->
-    <!--https://dsmorse.github.io/gridster.js/docs/files/src_jquery.collision.js.html-->
+      <div id="you-lose" class="lose-box"></div>
+      <!-- sources: https://interactjs.io> -->
+      <!-- sources: https://stackoverflow.com/questions/34656758/setinterval-with-random-time-in-javascript> -->
+      <!--https://dsmorse.github.io/gridster.js/docs/files/src_jquery.collision.js.html-->
 
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -45,6 +53,7 @@
     </div>
     <div id="game-over" class="hide">Game Over! The ball fell!</div>
     <div id="game-winner" class="hide">You Win! The ball is safe!</div>
+  </div>
 </body>
 
 </html>
