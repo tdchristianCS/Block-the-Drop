@@ -172,40 +172,35 @@ const addBallDrop = () => {
 const addCollision = () => {
   const $ball = $('.ball-class');
 
+  const checkCollision = () => {
+    const ballOffset = $ball.offset(); 
+    const ballWidth = 20;
+    const ballHeight = 20;
 
-    
-    const checkCollision = () => {
-      const ballOffset = $ball.offset(); 
-      const ballWidth = 20;
-      const ballHeight = 20;
+    // console.log('Ball Offset:', ballOffset, 'Width:', ballWidth, 'Height:', ballHeight); // Debug log for ball
 
-       console.log('Ball Offset:', ballOffset, 'Width:', ballWidth, 'Height:', ballHeight); // Debug log for ball
+    $('.brick-class').each(function () {
+      const $brick = $(this);
+      const brickOffset = $brick.offset();
+      const brickWidth = 205;
+      const brickHeight = 77;
 
-      $('.brick-class').each(function () {
-        const $brick = $(this);
-        const brickOffset = $brick.offset();
-        const brickWidth = 205;
-        const brickHeight = 77;
+      // console.log('Brick Offset:', brickOffset, 'Width:', brickWidth, 'Height:', brickHeight); // Debug log for brick
 
-        // console.log('Brick Offset:', brickOffset, 'Width:', brickWidth, 'Height:', brickHeight); // Debug log for brick
-
-        // Check if the ball overlaps with the brick
-        if (
-          $ball.offset < 0 &&
-          ballOffset.left < brickOffset.left + brickWidth &&
-          ballOffset.left + ballWidth > brickOffset.left &&
-          ballOffset.top < brickOffset.top + brickHeight &&
-          ballOffset.top + ballHeight > brickOffset.top 
-        ) {
-          // console.log('Collision detected!'); // Debug log for collision
-          // Reverse the ball's vertical direction
-          const currentTop = parseInt($ball.css('top'));
-          $ball.css('top', currentTop - (1000 / (level)) + 'px'); // Move the ball upwards
-        }
+      // Check if the ball overlaps with the brick
+      if (
+        ballOffset.left < brickOffset.left + brickWidth &&
+        ballOffset.left + ballWidth > brickOffset.left &&
+        ballOffset.top < brickOffset.top + brickHeight &&
+        ballOffset.top + ballHeight > brickOffset.top
+      ) {
+        // console.log('Collision detected!'); // Debug log for collision
+        // Reverse the ball's vertical direction
+        const currentTop = parseInt($ball.css('top'));
+        $ball.css('top', currentTop - 1000 / (level) + 'px'); // Move the ball upwards
+      }
     });
-    
   };
-  
 
   // Check for collisions every 16ms
   setInterval(checkCollision, 16);
