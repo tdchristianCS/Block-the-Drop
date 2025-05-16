@@ -21,12 +21,22 @@ const HomeandGamePanel = () => {
   addBallDrop();
 }
 
+const ShowHomePanel = () => {
+  $('#gamescreen').addClass('hide');
+  $('#homescreen').removeClass('hide');
+  $('#game-over').addClass('hide');
+  $('#game-winner').addClass('hide');
+  $('#restartbutton').addClass('hide');
+}
+
 const hideHelp = () => {
   $('#gamescreen').addClass('hide');
   $('#homescreen').removeClass('hide');
 }
 
 $('#startbutton').click(HomeandGamePanel);
+$('#restartbutton').click(ShowHomePanel);
+
 // $('#hideHelp').click(hideHelp);
 
 
@@ -133,6 +143,8 @@ const checkGameOver = () => {
   if (ballTop >= 700) {
     // alert('Game Over! The ball fell!'); // makes a tab at top of screen where dead
     $('#game-over').removeClass('hide');
+    $('#restartbutton').removeClass('hide');
+
     $('#app').addClass('hide');
     clearInterval(interval);
     // Make it so if ball get pushed up past Y start point, you win

@@ -13,8 +13,13 @@
 
   <div class='panel' id='homescreen'>
     <h1>This is the Home screen!</h1>
-    <button id='startbutton'>Start</button>
+    <div class="flex-col">
+    <div class="flex-row">
+    <button  id='startbutton'> Start</button>
+    </div>
+    </div>
   </div>
+
   <div class='panel hide' id='gamescreen'>
 
     <!-- partial:index.partial.html -->
@@ -51,8 +56,14 @@
       <script src="./script.js"></script>
 
     </div>
+        <button id= "restartbutton" class="hide"> Restart</button>
+
+    <div class="flex-col">
+    <div class="flex-row">
     <div id="game-over" class="hide">Game Over! The ball fell!</div>
     <div id="game-winner" class="hide">You Win! The ball is safe!</div>
+  </div>
+  </div>
   </div>
 </body>
 
