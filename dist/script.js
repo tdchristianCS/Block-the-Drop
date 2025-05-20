@@ -21,13 +21,13 @@ const HomeandGamePanel = () => {
   addBallDrop();
 }
 
-const ShowHomePanel = () => {
-  $('#gamescreen').addClass('hide');
-  $('#homescreen').removeClass('hide');
-  $('#game-over').addClass('hide');
-  $('#game-winner').addClass('hide');
-  $('#restartbutton').addClass('hide');
-}
+// const ShowHomePanel = () => {
+//   $('#gamescreen').addClass('hide');
+//   $('#homescreen').removeClass('hide');
+//   $('#game-over').addClass('hide');
+//   $('#game-winner').addClass('hide');
+//   $('#restartbutton').addClass('hide');
+// }
 
 const hideHelp = () => {
   $('#gamescreen').addClass('hide');
@@ -35,7 +35,7 @@ const hideHelp = () => {
 }
 
 $('#startbutton').click(HomeandGamePanel);
-$('#restartbutton').click(ShowHomePanel);
+// $('#restartbutton').click(ShowHomePanel);
 
 // $('#hideHelp').click(hideHelp);
 
@@ -153,6 +153,8 @@ const checkGameOver = () => {
     $("#game-winner").removeClass('hide');
     $('#app').addClass('hide');
     $('.brick-class').remove();
+    $('#restartbutton').removeClass('hide');
+
     clearInterval(interval);
   }
 }; 
