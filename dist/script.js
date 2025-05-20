@@ -16,8 +16,8 @@ const HomeandGamePanel = () => {
   $('#homescreen').addClass('hide');
 
   // start movement
-  addBallMove(); 
-  addCollision(); 
+  addBallMove();
+  addCollision();
   addBallDrop();
 }
 
@@ -29,12 +29,20 @@ const HomeandGamePanel = () => {
 //   $('#restartbutton').addClass('hide');
 // }
 
+const ShowHelpPanel = () => {
+  console.log('clickyy');
+  $('#helpScreen').removeClass('hide');
+  $('#gamescreen').addClass('hide');
+  $('#homescreen').addClass('hide');
+}
+
 const hideHelp = () => {
   $('#gamescreen').addClass('hide');
   $('#homescreen').removeClass('hide');
+  $("#helpButton").removeClass('hide');
+
 }
 
-$('#startbutton').click(HomeandGamePanel);
 // $('#restartbutton').click(ShowHomePanel);
 
 // $('#hideHelp').click(hideHelp);
@@ -117,18 +125,16 @@ const addBallMove = () => {
   let direction = 1; // 1 is fowards, -1 backward
 
   let position = 0; // position of the ball
+const move = () => {
+  position += speed * direction;
 
-  const move = () => {
-    position += speed * direction;
+  // Switches direction so it doesn't go off screen. Online I found that | | is an "operator" it like which returns if true
+  if (position >= amplitude || position <= 0) {
+    direction *= -1;
+  }
 
-    // Switches direction so it doesn't go off screen. Online I found that | | is an "operator" it like which returns if true
-    if (position >= amplitude || position <= 0) {
-      direction *= -1;
-    }
-
-    $ball.css('left', position + 'px');
-  };
-
+  $ball.css('left', position + 'px');
+};
   // This is used like frames so it doesn't go supersonic speed, apparently 16 is typical
   setInterval(move, 16);
 };
@@ -148,16 +154,17 @@ const checkGameOver = () => {
     $('#app').addClass('hide');
     clearInterval(interval);
     // Make it so if ball get pushed up past Y start point, you win
-  
+
   } else if (ballTop < 0) {
     $("#game-winner").removeClass('hide');
     $('#app').addClass('hide');
     $('.brick-class').remove();
     $('#restartbutton').removeClass('hide');
 
+
     clearInterval(interval);
   }
-}; 
+};
 const interval = setInterval(checkGameOver, 100); // should check every 100 milliseconds
 
 // Make it so when Ball hits the Brick, it will bounce back (jquery)
@@ -179,7 +186,18 @@ const addBallDrop = () => {
     disableDragging(); // Disable dragging when the ball starts falling
   }, randomTime);
 
-  setInterval(move, 16);
+//   const move = () => {
+//   position += speed * direction;
+
+//   // Switches direction so it doesn't go off screen. Online I found that | | is an "operator" it like which returns if true
+//   if (position >= amplitude || position <= 0) {
+//     direction *= -1;
+//   }
+
+//   $ball.css('left', position + 'px');
+// };
+
+//   setInterval(move, 16);
 };
 
 // Add collision detection
@@ -187,7 +205,7 @@ const addCollision = () => {
   const $ball = $('.ball-class');
 
   const checkCollision = () => {
-    const ballOffset = $ball.offset(); 
+    const ballOffset = $ball.offset();
     const ballWidth = 20;
     const ballHeight = 20;
 
@@ -222,4 +240,7 @@ const addCollision = () => {
 };
 
 $(document).ready(function () {
+
+$('#startbutton').click(HomeandGamePanel);
+$('#helpButton').click(ShowHelpPanel);
 });
