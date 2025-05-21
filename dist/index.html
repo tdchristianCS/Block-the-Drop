@@ -14,9 +14,9 @@
   <div class='panel' id='homescreen'>
     <h1>This is the Home screen!</h1>
     <div class="flex-col">
-    <div class="flex-row">
-    <button  id='startbutton'> Start</button>
-    </div>
+      <div class="flex-row">
+        <button id='startbutton'> Start</button>
+      </div>
     </div>
   </div>
 
@@ -56,22 +56,29 @@
       <script src="./script.js"></script>
 
     </div>
-        <button id= "restartbutton" class="hide"> Restart</button>
+    <button id="restartbutton" class="hide">Restart</button>
 
     <div class="flex-col">
-    <div class="flex-row">
-    <div id="game-over" class="hide">Game Over! The ball fell!</div>
-    <div id="game-winner" class="hide">You Win! The ball is safe!</div>
-  </div>
-  </div>
+      <div class="flex-row">
+        <div id="game-over" class="hide">Game Over! The ball fell!</div>
+        <div id="game-winner" class="hide">You Win! The ball is safe!</div>
+      </div>
+    </div>
   </div>
   <button id="helpButton"> Help </button>
 
   <div class='panel hide' id='helpScreen'>
-      <h1> why do you need help loser</h1>
-  
-  
+    <h1> How to Play</h1>
+    <div class="instructions">
+      <li>Move your blocks, with your mouse, to try and block the ball</li>
+      <li>Click "Another Brick", if you need more to block it </li>
+      <li>The ball will randomely drop, then you won't be able to move the blocks</li>
+      <li>You lose if the ball hits the bottom of the screen</li>
+      <li> You win if it successfully hits the top of the screen</li>
+      <button id="unhelpButton" class="hide">Help</button>
     </div>
+
+  </div>
   </div>
 </body>
 

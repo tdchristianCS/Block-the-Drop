@@ -21,19 +21,24 @@ const HomeandGamePanel = () => {
   addBallDrop();
 }
 
-// const ShowHomePanel = () => {
-//   $('#gamescreen').addClass('hide');
-//   $('#homescreen').removeClass('hide');
-//   $('#game-over').addClass('hide');
-//   $('#game-winner').addClass('hide');
-//   $('#restartbutton').addClass('hide');
-// }
+
 
 const ShowHelpPanel = () => {
-  console.log('clickyy');
   $('#helpScreen').removeClass('hide');
-  $('#gamescreen').addClass('hide');
   $('#homescreen').addClass('hide');
+  $("#helpButton").addClass('hide');
+  $("#unhelpButton").removeClass('hide');
+  $('#gamescreen').addClass('hide');
+
+}
+const HideHelpPanel = () => {
+  $('#helpScreen').addClass('hide');
+  $('#homescreen').removeClass('hide');
+  $("#helpButton").removeClass('hide');
+  $("unhelpButton").addClass('hide')
+  // var position = 0;
+  // var speed=0;
+  // var randomTime = Math.random() * (10000 - 5000) + 5000;
 }
 
 const hideHelp = () => {
@@ -106,14 +111,11 @@ const addBrick = () => {
   }
 
   nBricks += 1;
+  lastY += 20; 
 
-  lastY = + 20
+  let div = `<div class="brick-class" data-x="0" data-y="${lastY}" data-angle="0" style="transform: translate(0px, ${lastY}px) rotate(0deg);">THE BRICK</div>`;
 
-  let div = `<div class="brick-class" data-x="0" data-y="${lastY} " data-angle = "0" >THE BRICK</div>`;
-
-
-
-  $('body').append(div);
+  $('#app').append(div);
 }
 $('#add-brick').click(addBrick);
 
@@ -125,16 +127,16 @@ const addBallMove = () => {
   let direction = 1; // 1 is fowards, -1 backward
 
   let position = 0; // position of the ball
-const move = () => {
-  position += speed * direction;
+  const move = () => {
+    position += speed * direction;
 
-  // Switches direction so it doesn't go off screen. Online I found that | | is an "operator" it like which returns if true
-  if (position >= amplitude || position <= 0) {
-    direction *= -1;
-  }
+    // Switches direction so it doesn't go off screen. Online I found that | | is an "operator" it like which returns if true
+    if (position >= amplitude || position <= 0) {
+      direction *= -1;
+    }
 
-  $ball.css('left', position + 'px');
-};
+    $ball.css('left', position + 'px');
+  };
   // This is used like frames so it doesn't go supersonic speed, apparently 16 is typical
   setInterval(move, 16);
 };
@@ -186,18 +188,18 @@ const addBallDrop = () => {
     disableDragging(); // Disable dragging when the ball starts falling
   }, randomTime);
 
-//   const move = () => {
-//   position += speed * direction;
+  //   const move = () => {
+  //   position += speed * direction;
 
-//   // Switches direction so it doesn't go off screen. Online I found that | | is an "operator" it like which returns if true
-//   if (position >= amplitude || position <= 0) {
-//     direction *= -1;
-//   }
+  //   // Switches direction so it doesn't go off screen. Online I found that | | is an "operator" it like which returns if true
+  //   if (position >= amplitude || position <= 0) {
+  //     direction *= -1;
+  //   }
 
-//   $ball.css('left', position + 'px');
-// };
+  //   $ball.css('left', position + 'px');
+  // };
 
-//   setInterval(move, 16);
+  //   setInterval(move, 16);
 };
 
 // Add collision detection
@@ -241,6 +243,10 @@ const addCollision = () => {
 
 $(document).ready(function () {
 
-$('#startbutton').click(HomeandGamePanel);
-$('#helpButton').click(ShowHelpPanel);
+  $('#startbutton').click(HomeandGamePanel);
+  $('#helpButton').click(ShowHelpPanel);
+  $('#unhelpButton').click(HideHelpPanel);
+  $('#restartbutton').click(function () {
+    window.location.reload();
+  })
 });
